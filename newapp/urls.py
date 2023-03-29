@@ -14,4 +14,5 @@ urlpatterns = [
     path('delete_task/<int:task_id>',views.delete_task),
     path('edit_task',views.edit_task),
     path('edit_task/<str:pk>',views.edit_task),
+    path('gotoheaven/',views.SignupPage)
 ]
