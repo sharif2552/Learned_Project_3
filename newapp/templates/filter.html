@@ -10,14 +10,14 @@
 </head>
 <body>
 
-    <h1>To-Do List</h1>
-    <form action="/add_task/" method="post">
+    <h1>Filter</h1>
+    <form action="/filter/" method="post">
         {% csrf_token %}
         <div class="input-group input-group-lg">
 
             <input style="background-color: darkgray;" id="name" name="name" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
           </div>
-          <button type="submit" class="btn btn-primary">Add Task</button>
+          <button type="submit" class="btn btn-primary">Search</button>
     </form>
     <table class="table table-dark">
         <thead>

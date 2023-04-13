@@ -5,7 +5,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Q
 
 from .forms import TaskForm
 
@@ -113,4 +113,16 @@ def edit_task(request, pk):
 	return render(request, 'edit_task.html', context)
 
 
-
+@login_required(login_url='/login/')
+def filter(request):
+    if request.method== "POST":
+        name = request.POST['name']
+        task = Task.objects.filter(Q(name__icontains=name))
+        context={
+            'tasks': task
+        }
+        return render(request,'filter.html',context)
+    elif request.method == 'GET':
+        return render(request, 'filter.html')
+    else:
+        return HttpResponse('An Exception Occurred')
